@@ -25,8 +25,8 @@ function Init() {
         compFac: _depthCompressionFactor,
         devicePixelRatio: 1
     });
-    renderer.shadowMapEnabled = true;
-    renderer.shadowMapType = THREE.BasicShadowMap;
+   // renderer.shadowMapEnabled = true;
+  //  renderer.shadowMapType = THREE.BasicShadowMap;
     Leia_addRender(renderer,{bFPSVisible:true});
 
     //add object to Scene
@@ -43,17 +43,28 @@ function animate() {
     requestAnimationFrame(animate);
 
     //set mesh animation
-    for (var i = 0; i < meshArray.length; i++) {
-        var curMeshGroup = meshArray[i].meshGroup;
-        switch (meshArray[i].name) {
-            case "helloworld":
-                curMeshGroup.rotation.x = 0.8 * Math.sin(5.0 * LEIA.time);
-                curMeshGroup.rotation.z = 0.6 * 0.6 * Math.sin(3.0 * LEIA.time);
-                break;
-            default:
-                break;
-        }
-    }
+   for (var i = 0; i < meshArray.length; i++) {
+         var mesh = meshArray[i].mesh;
+         switch (meshArray[i].name) {
+             case 'TheTip':
+               //  curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time);
+              mesh.rotation.set(0, Math.PI / 2 * LEIA.time *0.2, 0);
+                 break;
+			  case 'Cube':
+			  case 'SmallerSquares':
+			  case 'SmallestSquares':
+			  case 'clock':
+			  case 'music':
+			  case 'mail':
+			  case 'camera':
+			  mesh.rotation.set(0, Math.PI / 2 * LEIA.time *0.2, 0);
+			break;
+             default:
+                // curMeshGroup.rotation.set(0, 0, Math.PI / 2 * LEIA.time *0.2);
+            //  curMeshGroup.rotation.set(0, Math.PI / 2 * LEIA.time *0.2, 0);
+                 break;
+         }
+     }
     renderer.Leia_render({
         scene: scene,
         camera: camera,
@@ -70,63 +81,159 @@ function animate() {
 
 function addObjectsToScene() {
     //Add your objects here
-    //API to add STL Object
-    /*  Leia_LoadSTLModel({
-        path: 'resource/LEIA1.stl'
-    },function(mesh){
-      mesh.material.side = THREE.DoubleSide;
-      mesh.castShadow = true;
-      mesh.receiveShadow = true;
-      mesh.material.metal = true;
-      mesh.scale.set(60, 60, 60);
-      mesh.position.set(0, 0, 0);
-      var group = new THREE.Object3D();
-      group.add(mesh);
-      scene.add(group);
-      meshArray.push({
-        meshGroup: group,
-        name: 'LEIA1'
-      });
-    });*/
-
-    //Add Text
-    var helloText = createText({
-        text: "Hello",
-        size: 15
+    Leia_LoadSTLModel({
+        path: 'resource/Cube.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(30, 30, 30);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "Cube"
+        });
     });
-    helloText.position.set(-20, -5, 3);
-    helloText.rotation.set(0, 0, 0);
-    helloText.castShadow = true;
-    helloText.receiveShadow = true;
-    var helloGroup = new THREE.Object3D();
-    helloGroup.add(helloText);
-    scene.add(helloGroup);
-    meshArray.push({
-        meshGroup: helloGroup,
-        name: "helloworld"
+	
+	Leia_LoadSTLModel({
+        path: 'resource/SmallerSquares.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(30, 30, 30);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "SmallerSquares"
+        });
     });
-
-    //add background texture
-    var backgroundPlane = Leia_createTexturePlane({
+	
+	Leia_LoadSTLModel({
+        path: 'resource/SmallestSquares.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(30, 35, 30);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "SmallestSquares"
+        });
+    });
+	
+	Leia_LoadSTLModel({
+        path: 'resource/TheTip.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(5, 5, 5);
+		mesh.position.set(0, 22, 0);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "TheTip"
+        });
+    });
+	
+	Leia_LoadSTLModel({
+        path: 'resource/camera.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(15, 15, 15);
+		mesh.position.set(0, 0, 15);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "camera"
+        });
+    });
+	
+	Leia_LoadSTLModel({
+        path: 'resource/mail.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(15, 15, 15);
+		mesh.position.set(0, 0, -15);
+		mesh.rotation.set(0, -Math.PI, 0);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "mail"
+        });
+    });
+	
+	Leia_LoadSTLModel({
+        path: 'resource/music.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(15, 15, 15);
+		mesh.position.set(15, 0, 0);
+		mesh.rotation.set(0, -Math.PI/2, 0);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "music"
+        });
+    });
+	
+	Leia_LoadSTLModel({
+        path: 'resource/clock.stl',  //AppleLogo_1k
+		color: 0xff00ff
+    }, function (mesh) {
+        mesh.scale.set(15, 15, 15);
+		mesh.position.set(-15, 0, 0);
+		mesh.rotation.set(0, Math.PI/2, 0);
+		mesh.castShadow = true;
+		mesh.material.side = THREE.DoubleSide;
+		var group = new THREE.Object3D();
+        group.add(mesh);
+        scene.add(group);
+       // scene.add(mesh);
+        meshArray.push({
+            mesh: group,
+            name: "clock"
+        });
+    });
+  
+   var backgroundPlane = Leia_createTexturePlane({
         filename: 'resource/world-map-background2.jpg',
         width: 100,
         height: 75
     });
-    backgroundPlane.position.z = -8;
+    backgroundPlane.position.z = -20;
     backgroundPlane.castShadow = false;
     backgroundPlane.receiveShadow = true;
     scene.add(backgroundPlane);
-  
-  //add center plane
-   var centerPlane = Leia_createTexturePlane({
-        filename: 'resource/crack001.png',
-        width: 100,
-        height: 75,
-        transparent:true
-     
-    });
-    centerPlane.position.z = 0;
-    scene.add(centerPlane);
 }
 
 function createText(parameters) {
