@@ -25,8 +25,8 @@ function Init() {
         compFac: _depthCompressionFactor,
         devicePixelRatio: 1
     });
-    // renderer.shadowMapEnabled = true;
-    //  renderer.shadowMapType = THREE.BasicShadowMap;
+   // renderer.shadowMapEnabled = true;
+ //   renderer.shadowMapType = THREE.BasicShadowMap;
     Leia_addRender(renderer, {
         bFPSVisible: true
     });
