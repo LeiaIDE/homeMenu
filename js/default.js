@@ -238,40 +238,7 @@ function addObjectsToScene() {
     scene.add(backgroundPlane);
 }
 
-function createText(parameters) {
-    parameters = parameters || {};
-    var strText = parameters.text;
-    var size = parameters.size;
-    var menuGeometry = new THREE.TextGeometry(
-        strText, {
-            size: size,
-            height: 2,
-            curveSegments: 4,
-            font: "helvetiker",
-            weight: "normal",
-            style: "normal",
-            bevelThickness: 0.6,
-            bevelSize: 0.25,
-            bevelEnabled: true,
-            material: 0,
-            extrudeMaterial: 1
-        }
-    );
-    var menuMaterial = new THREE.MeshFaceMaterial(
-        [
-            new THREE.MeshLambertMaterial({
-                color: 0xffffff,
-                shading: THREE.FlatShading
-            }), // front
-            new THREE.MeshLambertMaterial({
-                color: 0xffffff,
-                shading: THREE.SmoothShading
-            }) // side
-        ]
-    );
-    var menuMesh = new THREE.Mesh(menuGeometry, menuMaterial);
-    return menuMesh;
-}
+
 
 function addLights() {
     //Add Lights Here
