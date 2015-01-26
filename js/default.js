@@ -153,7 +153,7 @@ function addObjectsToScene() {
     });
 
     Leia_LoadSTLModel({
-        path: 'resource/camera.stl', //AppleLogo_1k
+        path: 'resource/camera2.stl', //AppleLogo_1k
         color: 0xff00ff
     }, function(mesh) {
         mesh.scale.set(15, 15, 15);
@@ -190,7 +190,7 @@ function addObjectsToScene() {
     });
 
     Leia_LoadSTLModel({
-        path: 'resource/music.stl', //AppleLogo_1k
+        path: 'resource/music2.stl', //AppleLogo_1k
         color: 0xff00ff
     }, function(mesh) {
         mesh.scale.set(15, 15, 15);
@@ -209,7 +209,7 @@ function addObjectsToScene() {
     });
 
     Leia_LoadSTLModel({
-        path: 'resource/clock.stl', //AppleLogo_1k
+        path: 'resource/clock2.stl', //AppleLogo_1k
         color: 0xff00ff
     }, function(mesh) {
         mesh.scale.set(15, 15, 15);
