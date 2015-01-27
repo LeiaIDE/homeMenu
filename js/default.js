@@ -71,6 +71,7 @@ function animate() {
         scene: scene,
         camera: camera,
         holoScreenSize: _holoScreenSize,
+        tunedsp:_maxDisparity,
         filterA: _filterA,
         filterB: _filterB,
         filterC: _filterC,
